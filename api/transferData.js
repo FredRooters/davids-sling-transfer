@@ -6,13 +6,11 @@ export default async function handler(req, res) {
   try {
     const { apiKey, payload } = req.body;
 
-    if (!apiKey || !payload) {
-      return res.status(400).json({ message: 'Missing apiKey or payload' });
+    if (!payload) {
+      return res.status(400).json({ message: 'Missing payload' });
     }
 
-    // Log or process the payload here
-    console.log("Received secure payload:", payload);
-
+    // Just confirm the payload was received
     return res.status(200).json({ message: 'Payload accepted successfully', data: payload });
   } catch (error) {
     return res.status(500).json({ message: 'Server error', error: error.message });
